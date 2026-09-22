@@ -1306,3 +1306,307 @@ footer {
         border-radius: 8px;
     }
 }
+
+/* ==============================
+   PACKAGES SECTION
+   ============================== */
+.packages-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.cat-tab {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--light-dim);
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cat-tab:hover {
+    background: var(--glass-2);
+    color: var(--light);
+}
+
+.cat-tab.active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--dark);
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.category-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.category-content.active {
+    display: block;
+}
+
+/* Tier Tabs */
+.tier-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.tier-tab {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--light-dim);
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tier-tab:hover {
+    background: rgba(0, 212, 255, 0.05);
+    border-color: rgba(0, 212, 255, 0.2);
+    color: var(--primary);
+}
+
+.tier-tab.active {
+    background: rgba(0, 212, 255, 0.15);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.tier-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.tier-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Packages Grid */
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Package Card */
+.package-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: var(--transition-slow);
+    position: relative;
+}
+
+.package-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+.package-card:hover::before {
+    opacity: 1;
+}
+
+.package-header {
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(7, 11, 20, 0.4);
+}
+
+.package-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.package-subtitle {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.package-body {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.package-desc {
+    color: var(--light-dim);
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.6;
+}
+
+.package-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    flex: 1;
+}
+
+.package-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    color: var(--light);
+    font-size: 0.9rem;
+}
+
+.package-features li i {
+    color: var(--primary);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.package-meta {
+    background: var(--dark-3);
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--glass-border);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+    color: var(--light-dim);
+    font-size: 0.85rem;
+}
+
+.meta-item:last-child {
+    margin-bottom: 0;
+}
+
+.meta-item i {
+    color: var(--accent);
+    width: 16px;
+    height: 16px;
+}
+
+.meta-item strong {
+    color: var(--white);
+}
+
+.package-best-for {
+    font-size: 0.9rem;
+    color: var(--light-dim);
+    line-height: 1.5;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--glass-border);
+}
+
+.package-best-for strong {
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.package-footer {
+    padding: 1.5rem 2rem 2rem;
+}
+
+.btn.full-width {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Add-ons Section */
+.addons-section {
+    margin-top: 5rem;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    text-align: center;
+}
+
+.addons-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.addons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.addon-tag {
+    background: var(--dark-2);
+    border: 1px solid var(--glass-border);
+    color: var(--light-dim);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: default;
+}
+
+.addon-tag:hover {
+    background: rgba(0, 212, 255, 0.05);
+    border-color: rgba(0, 212, 255, 0.2);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .packages-grid {
+        grid-template-columns: 1fr;
+    }
+    .addons-section {
+        padding: 2rem;
+    }
+}

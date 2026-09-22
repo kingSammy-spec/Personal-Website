@@ -71,3 +71,61 @@ if (contactForm) {
     });
 }
 
+
+// Packages Tabs Logic
+document.addEventListener("DOMContentLoaded", () => {
+    const catTabs = document.querySelectorAll(".cat-tab");
+    const catContents = document.querySelectorAll(".category-content");
+
+    catTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            // Remove active from all category tabs and contents
+            catTabs.forEach(t => t.classList.remove("active"));
+            catContents.forEach(c => c.classList.remove("active"));
+
+            // Add active to clicked tab and its content
+            tab.classList.add("active");
+            const targetId = `cat-${tab.dataset.cat}`;
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.classList.add("active");
+                
+                // When switching categories, automatically activate the first tier tab
+                const tierTabs = targetContent.querySelectorAll(".tier-tab");
+                const tierContents = targetContent.querySelectorAll(".tier-content");
+                if (tierTabs.length > 0) {
+                    tierTabs.forEach(t => t.classList.remove("active"));
+                    tierContents.forEach(c => c.classList.remove("active"));
+                    
+                    tierTabs[0].classList.add("active");
+                    const firstTierId = tierTabs[0].dataset.tier;
+                    document.getElementById(firstTierId).classList.add("active");
+                }
+            }
+        });
+    });
+
+    const tierTabs = document.querySelectorAll(".tier-tab");
+    tierTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            // Find parent category content
+            const parentContent = tab.closest(".category-content");
+            if (parentContent) {
+                // Remove active from all tier tabs and contents inside this category
+                const localTierTabs = parentContent.querySelectorAll(".tier-tab");
+                const localTierContents = parentContent.querySelectorAll(".tier-content");
+                
+                localTierTabs.forEach(t => t.classList.remove("active"));
+                localTierContents.forEach(c => c.classList.remove("active"));
+
+                // Add active to clicked tab and its content
+                tab.classList.add("active");
+                const targetId = tab.dataset.tier;
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.add("active");
+                }
+            }
+        });
+    });
+});
